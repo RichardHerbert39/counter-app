@@ -4,6 +4,9 @@ class Counter extends Component {
 	render() {
 		return (
 			<div>
+				<span className="badge badge-success">
+					{this.formatPrice()}
+				</span>
 				<span className={this.getBadgeClasses()}>
 					{this.formatCount()}
 				</span>
@@ -28,6 +31,12 @@ class Counter extends Component {
 			</div>
 		);
 	}
+	formatPrice() {
+		let price = "£";
+		price += this.props.counter.price.toFixed(2);
+		return price;
+	}
+
 	getBadgeClasses() {
 		let classes = "badge m-2 badge-";
 		classes += this.props.counter.value === 0 ? "warning" : "primary";
